@@ -7,6 +7,8 @@
 
 using namespace std;
 
+int testDataAmount = 60;
+
 /**
  * Vector filter to filter the customers based to specified criteria
  *
@@ -433,7 +435,7 @@ void CustomerManager::listCustomers() {
 void CustomerManager::generateSampleCustomers() {
     int yB = 1990; // year base from where to count down
 
-    for (int i = 0; i < 60; ++i) { // creates 60 sample "Jan" data with different birthday values
+    for (int i = 0; i < testDataAmount; ++i) { // creates 60 sample "Jan" data with different birthday values
         Customer customer = *new Customer(++uuid, "Jan " + to_string(i), "Mueller " + to_string(1), "Straße",
                                           "20251", "Hamburg", "04046812364",
                                           "05.09." + to_string(yB - i), true);
