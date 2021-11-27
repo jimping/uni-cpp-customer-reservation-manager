@@ -1,5 +1,0 @@
-Stand;07.06.2020 um 13:06;;;
-1;Jan 0;Mueller 1;Suzuki Bandit;07.06.2020 um 13:06
-2;Jan 1;Mueller 1;Honda TransAlp;07.06.2020 um 13:06
-3;Jan 2;Mueller 1;BMW F 650 GS;07.06.2020 um 13:06
-4;Jan 3;Mueller 1;Kawasaki ZZR1400;07.06.2020 um 13:06
