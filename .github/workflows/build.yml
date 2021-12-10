@@ -8,9 +8,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Build project
         uses: nicledomaS/cmake_build_action@v1.4
         with:
           submodule_update: ON
           run_tests: ON
           unit_test_build: -Dtest=ON
+
+      - name: Send success mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Build was successful :)
+          to: splintnetde@gmail.com
+          from: Luke Skywalker
+          secure: true
+          body: |
+            # Well done buddy!
+            
+            Build job of ${{github.repository}} completed successfully!
+          convert_markdown: true
+          priority: high
