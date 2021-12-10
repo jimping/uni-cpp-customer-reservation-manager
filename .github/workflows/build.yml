@@ -16,6 +16,11 @@ jobs:
           run_tests: ON
           unit_test_build: -Dtest=ON
 
+      - name: Rename file
+        run: |
+          cp cmake-build-debug/C__ ./Manager
+          zip Manager.zip ./Manager
+
       - name: Send success email
         uses: dawidd6/action-send-mail@v3
         with:
@@ -31,5 +36,8 @@ jobs:
             # Well done buddy!
             
             Build job of ${{github.repository}} completed successfully!
+            
+            I attached the file
           convert_markdown: true
           priority: high
+          attachments: Manager.zip
