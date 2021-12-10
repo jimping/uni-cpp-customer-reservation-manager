@@ -61,4 +61,4 @@ jobs:
             I attached the file
           convert_markdown: true
           priority: high
-          attachments: Manager.zip
+          attachments: ./build/Manager-0.1.1-Linux.tar.gz
