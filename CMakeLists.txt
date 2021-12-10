@@ -7,5 +7,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_executable(Manager manager.cpp)
 
 set(CPACK_GENERATOR TGZ)
+set(CPACK_PROJECT_NAME Manager)
 set(CPACK_PACKAGE_NAME Manager)
 set(CPACK_PACKAGE_VENDOR "jimping")
+
+include(CPack)
