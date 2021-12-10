@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  ubuntu-build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,7 +38,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/Manager.zip
+          asset_path: ./build/Manager-0.1.1-Linux.tar.gz
           asset_name: Manager.zip
           asset_content_type: application/zip
 
