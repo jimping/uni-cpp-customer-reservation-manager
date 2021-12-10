@@ -16,7 +16,7 @@ jobs:
           run_tests: ON
           unit_test_build: -Dtest=ON
 
-      - name: Send success mail
+      - name: Send success email
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
