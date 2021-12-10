@@ -57,8 +57,5 @@ jobs:
             # Well done buddy!
             
             Build job of ${{github.repository}} completed successfully!
-            
-            I attached the file
           convert_markdown: true
           priority: high
-          attachments: ./build/Manager-0.1.1-Linux.tar.gz
