@@ -16,10 +16,10 @@ jobs:
           run_tests: ON
           unit_test_build: -Dtest=ON
 
-      - name: Rename file
-        run: |
-          cp cmake-build-debug/C__ ./Manager
-          zip Manager.zip ./Manager
+      - uses: actions/upload-artifact@v2
+        with:
+          path: build/*.tar.gz
+          name: artifact_${{ matrix.os }}_${{ matrix.configs }}.tar.gz
 
       - name: Send success email
         uses: dawidd6/action-send-mail@v3
