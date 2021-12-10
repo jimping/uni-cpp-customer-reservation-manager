@@ -1,6 +1,9 @@
 name: C/C++ CI
 
-on: [push]
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   ubuntu-build:
@@ -8,8 +11,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - run: |
-          export CPACK_PACKAGE_NAME=Manager
 
       - name: Build project
         uses: nicledomaS/cmake_build_action@v1.4
@@ -18,11 +19,6 @@ jobs:
           run_tests: ON
           create_package: ON
           unit_test_build: -Dtest=ON
-
-      - uses: actions/upload-artifact@v2
-        with:
-          path: build/*.tar.gz
-          name: artifact_${{ matrix.os }}_${{ matrix.configs }}.tar.gz
 
       - name: Create Release
         id: create_release
@@ -34,15 +30,16 @@ jobs:
           release_name: ${{ github.ref }}
           draft: false
           prerelease: false
+
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./my-artifact.zip
-          asset_name: my-artifact.zip
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/Manager.zip
+          asset_name: Manager.zip
           asset_content_type: application/zip
 
       - name: Send success email
