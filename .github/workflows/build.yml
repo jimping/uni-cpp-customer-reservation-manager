@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        run: |
+          export CPACK_PACKAGE_NAME=Manager
 
       - name: Build project
         uses: nicledomaS/cmake_build_action@v1.4
@@ -15,7 +17,6 @@ jobs:
           submodule_update: ON
           run_tests: ON
           create_package: ON
-          package_generator: ZIP
           unit_test_build: -Dtest=ON
 
       - uses: actions/upload-artifact@v2
@@ -30,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: ${{ github.ref }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
